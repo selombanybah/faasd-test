@@ -33,7 +33,7 @@ jobs:
       - name: Get Repo Owner
         id: get_repo_owner
         run: >
-          echo ::set-output name=repo_owner::$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
+          echo ::set-output name=repo_owner::selombanybah
       - name: Docker Login 
         run: >
           echo ${{secrets.DOCKER_PASSWORD}} | docker login ghcr.io --username ${{ steps.get_repo_owner.outputs.repo_owner }} --password-stdin
