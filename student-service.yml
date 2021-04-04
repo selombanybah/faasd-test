@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://35.232.59.116:8080
+functions:
+  student-service:
+    lang: csharp-httprequest
+    handler: ./student-service
+    image: ghcr.io/selombanybah/student-service:latest
+
