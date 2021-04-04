@@ -45,7 +45,7 @@ jobs:
         run: >
           OWNER="${{ steps.get_repo_owner.outputs.repo_owner }}" 
           TAG="latest"
-          faas-cli publish -f student-service.yml --extra-tag ${{ github.sha }} --platforms linux/amd64,linux/arm/v7,linux/arm64
+          faas-cli publish -f student-service.yml --extra-tag ${{ github.sha }} --platforms linux/amd64
       - name: Login 
         run: >
           echo ${{secrets.OPENFAAS_PASSWORD}} |
