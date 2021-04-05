@@ -53,4 +53,4 @@ jobs:
       - name: Deploy 
         run: >
           OWNER="${{ steps.get_repo_owner.outputs.repo_owner }}" TAG="${{ github.sha }}"
-          faas-cli deploy -f student-service.yml --gateway ${{secrets.OPENFAAS_URL}} --send-registry-auth
+          faas-cli deploy -f student-service.yml --gateway ${{secrets.OPENFAAS_URL}}
