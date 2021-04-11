@@ -33,7 +33,7 @@ jobs:
       - name: Get Repo Owner
         id: get_repo_owner
         run: >
-          echo ::set-output name=repo_owner::selombanybah
+          echo ::set-output name=repo_owner::$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
       - name: Docker Login 
         run: >
           echo ${{secrets.DOCKER_PASSWORD}} | docker login ghcr.io --username ${{ steps.get_repo_owner.outputs.repo_owner }} --password-stdin
@@ -53,4 +53,4 @@ jobs:
       - name: Deploy 
         run: >
           OWNER="${{ steps.get_repo_owner.outputs.repo_owner }}" TAG="${{ github.sha }}"
-          faas-cli deploy -f student-service.yml --gateway ${{secrets.OPENFAAS_URL}}
+          faas-cli deploy -f student-service.yml --gateway ${{secrets.OPENFAAS_URL}} --send-registry-auth --tag sha
